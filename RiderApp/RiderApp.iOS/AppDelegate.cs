@@ -23,6 +23,7 @@ namespace RiderApp.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            Xamarin.FormsGoogleMaps.Init(Credentials.Credentials.API_KEY);
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
