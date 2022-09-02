@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+RiderApp/RiderApp/Credentials/Credentials.cs
+RiderApp/RiderApp.Android/Resources/values/api-keys.xml
