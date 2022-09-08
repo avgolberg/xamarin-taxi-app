@@ -15,7 +15,12 @@ namespace RiderApp
         public MainPage()
         {
             InitializeComponent();
-            AddMapStyle();
+           AddMapStyle();
+
+            Position position = new Position(46.48372400877479, 30.730843193582036);
+            MapSpan mapSpan = MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(15));
+                //(position, 0.01, 0.01);
+            map.MoveToRegion(mapSpan);
         }
         void AddMapStyle()
         {
@@ -31,6 +36,9 @@ namespace RiderApp
                     map.MapStyle = MapStyle.FromJson(styleFile);
                 }
             }
+          
+
+            
         }
     }
 }

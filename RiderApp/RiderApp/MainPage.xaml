@@ -4,11 +4,28 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
              x:Class="RiderApp.MainPage">
 
-    <StackLayout>
-        <maps:Map x:Name="map"
-                  VerticalOptions="FillAndExpand"
-                  HorizontalOptions="FillAndExpand"
-                  IsShowingUser="True" />
-    </StackLayout>
+    <AbsoluteLayout>
+        <maps:Map x:Name="map" 
+                  AbsoluteLayout.LayoutBounds="1, 0, 1, 0.95" AbsoluteLayout.LayoutFlags="All" />
+        <Frame Padding="11"
+               CornerRadius="30"
+               IsClippedToBounds="true"
+               BackgroundColor="White"
+               AbsoluteLayout.LayoutBounds="0.5, 0.1, 0.7, 63"
+               AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional">
+            <Entry Placeholder="Початкова адреса" />
+        </Frame>
+        <Frame Padding="11"
+               CornerRadius="30"
+               IsClippedToBounds="true"
+               BackgroundColor="White"
+               AbsoluteLayout.LayoutBounds="0.5, 0.193, 0.7, 63"
+               AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional">
+            <Entry Placeholder="Кінцева адреса" />
+        </Frame>
+        <Button Text="Start"
+                AbsoluteLayout.LayoutBounds="0, 1, 1, 0.05"
+                AbsoluteLayout.LayoutFlags="All"/>
+    </AbsoluteLayout>
 
 </ContentPage>
