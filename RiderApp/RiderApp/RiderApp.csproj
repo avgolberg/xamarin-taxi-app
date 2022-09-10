@@ -11,16 +11,40 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\business-car.png" />
+    <None Remove="Images\business-car2.png" />
+    <None Remove="Images\gps.png" />
+    <None Remove="Images\line.png" />
+    <None Remove="Images\location.png" />
+    <None Remove="Images\logo.png" />
+    <None Remove="Images\options.png" />
+    <None Remove="Images\parameters.png" />
+    <None Remove="Images\standard-car.png" />
+    <None Remove="Images\user-location.png" />
     <None Remove="MapStyle.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Images\business-car.png" />
+    <EmbeddedResource Include="Images\business-car2.png" />
+    <EmbeddedResource Include="Images\gps.png" />
+    <EmbeddedResource Include="Images\line.png" />
+    <EmbeddedResource Include="Images\location.png" />
+    <EmbeddedResource Include="Images\logo.png" />
+    <EmbeddedResource Include="Images\options.png" />
+    <EmbeddedResource Include="Images\parameters.png" />
+    <EmbeddedResource Include="Images\standard-car.png" />
     <EmbeddedResource Include="MapStyle.json" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="Xamarin.Forms.GoogleMaps.v2" Version="3.4.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="Images\user-location.png" />
   </ItemGroup>
 </Project>

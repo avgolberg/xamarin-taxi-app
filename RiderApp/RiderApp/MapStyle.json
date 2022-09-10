@@ -139,9 +139,6 @@
     "elementType": "all",
     "stylers": [
       {
-        "visibility": "on"
-      },
-      {
         "color": "#ffffff"
       }
     ]
@@ -155,24 +152,6 @@
       },
       {
         "visibility": "simplified"
-      }
-    ]
-  },
-  {
-    "featureType": "road",
-    "elementType": "labels.text.fill",
-    "stylers": [
-      {
-        "color": "#372f17"
-      }
-    ]
-  },
-  {
-    "featureType": "road",
-    "elementType": "labels.text.stroke",
-    "stylers": [
-      {
-        "color": "#ffffff"
       }
     ]
   },
@@ -226,19 +205,13 @@
   },
   {
     "featureType": "transit",
-    "elementType": "labels.text",
-    "stylers": [
-      {
-        "visibility": "simplified"
-      }
-    ]
-  },
-  {
-    "featureType": "transit.line",
-    "elementType": "geometry",
+    "elementType": "geometry.stroke",
     "stylers": [
       {
         "visibility": "on"
+      },
+      {
+        "color": "#ff0000"
       }
     ]
   },
@@ -287,6 +260,18 @@
       },
       {
         "color": "#918a80"
+      }
+    ]
+  },
+  {
+    "featureType": "transit.station.rail",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "visibility": "on"
+      },
+      {
+        "color": "#ffffff"
       }
     ]
   },
