@@ -47,4 +47,10 @@
   <ItemGroup>
     <Page Include="Images\user-location.png" />
   </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="FindAddressPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>

@@ -3,161 +3,199 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
              xmlns:local="clr-namespace:RiderApp.MarkupExtensions"
-             x:Class="RiderApp.MainPage">
+             x:Class="RiderApp.MainPage"
+             NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <Style x:Key="frame" TargetType="Frame">
-                <Setter Property="HasShadow" Value="False" />
-                <Setter Property="Padding" Value="11" />
-                <Setter Property="CornerRadius" Value="30" />
-                <Setter Property="BackgroundColor" Value="#ffc600" />
-                <Setter Property="VerticalOptions" Value="Center" />
-                
+            <Style x:Key="frame"
+                   TargetType="Frame">
+                <Setter Property="HasShadow"
+                        Value="False" />
+                <Setter Property="Padding"
+                        Value="11" />
+                <Setter Property="CornerRadius"
+                        Value="30" />
+                <Setter Property="BackgroundColor"
+                        Value="#ffc600" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+
             </Style>
-            <Style x:Key="label" TargetType="Label">
-                <Setter Property="FontSize" Value="16" />
-                <Setter Property="TextColor" Value="Black" />
+            <Style x:Key="label"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="16" />
+                <Setter Property="TextColor"
+                        Value="Black" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <AbsoluteLayout>
-        <maps:Map x:Name="map"
-                  AbsoluteLayout.LayoutBounds="1, 0, 1, 0.95"
-                  AbsoluteLayout.LayoutFlags="All" />
+    <Grid>
+        <!--<AbsoluteLayout x:Name="showRoutePage"
+                        IsVisible="false">
+            
+            --><!--<maps:Map 
+                      AbsoluteLayout.LayoutBounds="1, 1, 1, 1"
+                      AbsoluteLayout.LayoutFlags="All" />--><!--
+            
+            <Image Source="{local:EmbeddedImage RiderApp.Images.logo.png}"
+                   AbsoluteLayout.LayoutBounds="0.5, 0.05, 150, 60"
+                   AbsoluteLayout.LayoutFlags="PositionProportional" />
+            
+            <Frame Style="{StaticResource frame}"
+                   BackgroundColor="White"
+                   VerticalOptions="Fill"
+                   AbsoluteLayout.LayoutBounds="0, 1, 1, 0.26"
+                   AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Margin="10">
+                   
+                </StackLayout>
+            </Frame>
+        </AbsoluteLayout>-->
 
-        <StackLayout Orientation="Horizontal"
-                     BackgroundColor="Black"
-                     HorizontalOptions="Fill"
-                     AbsoluteLayout.LayoutBounds="0, 0, 1, 0.07"
-                     AbsoluteLayout.LayoutFlags="All">
+        <AbsoluteLayout x:Name="makeOrderPage"
+                        IsVisible="true">
+            <maps:Map x:Name="map"
+                      AbsoluteLayout.LayoutBounds="1, 1, 1, 0.95"
+                      AbsoluteLayout.LayoutFlags="All" />
+            
             <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="CenterAndExpand">
-                <Frame Style="{StaticResource frame}"
-                       Padding="9">
-                    <Label Text="Таксі"
-                           Style="{StaticResource label}" />
-                </Frame>
-                <Frame Style="{StaticResource frame}"
-                       BackgroundColor="Black"
-                       Padding="9">
-                    <Label Text="Доставка"
-                           Style="{StaticResource label}"
-                           TextColor="White" />
-                </Frame>
-                <Frame Style="{StaticResource frame}"
-                       BackgroundColor="Black"
-                       Padding="9">
-                    <Label Text="Вантажне таксі"
-                           Style="{StaticResource label}"
-                           TextColor="White" />
-                </Frame>
-            </StackLayout>
-        </StackLayout>
-
-        <Frame Style="{StaticResource frame}"
-               BackgroundColor="White"
-               VerticalOptions="Fill"
-               AbsoluteLayout.LayoutBounds="0.08, 0.13, 50, 50"
-               AbsoluteLayout.LayoutFlags="PositionProportional">
-            <Image Source="{local:EmbeddedImage RiderApp.Images.parameters.png}" />
-        </Frame>
-
-        <Image Source="{local:EmbeddedImage RiderApp.Images.logo.png}"
-               AbsoluteLayout.LayoutBounds="0.5, 0.13, 150, 60"
-               AbsoluteLayout.LayoutFlags="PositionProportional" />
-
-        <Frame Style="{StaticResource frame}"
-               VerticalOptions="Center"
-               AbsoluteLayout.LayoutBounds="0.92, 0.13, 80, 70"
-               AbsoluteLayout.LayoutFlags="PositionProportional">
-            <Label Text="Одеса"
-                   TextColor="Black"
-                   FontSize="15"
-                   HorizontalTextAlignment="Center"/>
-        </Frame>
-
-        <Frame Style="{StaticResource frame}"
-               BackgroundColor="White"
-               AbsoluteLayout.LayoutBounds="0.5, 0.4, 0.85, 63"
-               AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional">
-            <StackLayout Orientation="Horizontal">
-                <Entry Placeholder="Знайти адресу"
-                       HorizontalOptions="FillAndExpand" />
-                <Image Source="{local:EmbeddedImage RiderApp.Images.gps.png}"
-                       WidthRequest="20" />
-                <BoxView Color="#e1e1e1"
-                         WidthRequest="1"
-                         VerticalOptions="Fill"
-                         Margin="7" />
-                <Frame Style="{StaticResource frame}"
-                       WidthRequest="45"
-                       VerticalOptions="Center"
-                       Padding="7">
-                    <Label Text="1 хв."
-                           TextColor="Black"
-                           HorizontalTextAlignment="Center" />
-                </Frame>
-            </StackLayout>
-        </Frame>
-        <Image Source="{local:EmbeddedImage RiderApp.Images.location.png}"
-               AbsoluteLayout.LayoutBounds="0.5, 0.467, 0.2, 0.2"
-               AbsoluteLayout.LayoutFlags="All" />
-
-        <Image Source="{local:EmbeddedImage RiderApp.Images.options.png}"
-               AbsoluteLayout.LayoutBounds="0.5, 0.955, 0.5, 0.5"
-               AbsoluteLayout.LayoutFlags="All" />
-        <Frame Style="{StaticResource frame}"
-               BackgroundColor="White"
-               VerticalOptions="Fill"
-               AbsoluteLayout.LayoutBounds="0, 1, 1, 0.26"
-               AbsoluteLayout.LayoutFlags="All">
-            <StackLayout Margin="10">
-                <Frame Style="{StaticResource frame}"
-                       HeightRequest="50">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Викликати авто"
-                               TextColor="Black"
-                               FontSize="26"
-                               HorizontalOptions="CenterAndExpand"
-                               VerticalTextAlignment="Center"
-                               HorizontalTextAlignment="Center" />
-                        <StackLayout Orientation="Horizontal"
-                                     HorizontalOptions="End">
-                            <BoxView Color="#dea400"
-                                     WidthRequest="1"
-                                     Margin="0, 0, 20, 0" />
-                            <Label Text="+"
-                                   TextColor="Black"
-                                   FontSize="26"
-                                   WidthRequest="40"
-                                   VerticalTextAlignment="Center"
-                                    />
-                        </StackLayout>
-                    </StackLayout>
-                </Frame>
-                <StackLayout Orientation="Horizontal" Margin="10" Spacing="20" VerticalOptions="Center">
-                    <StackLayout VerticalOptions="Center">
-                        <Image Source="{local:EmbeddedImage RiderApp.Images.standard-car.png}"
-                               WidthRequest="90"
-                               HeightRequest="50"/>
-                        <Label Text="Стандарт&#10;від 60₴"
+                         BackgroundColor="Black"
+                         HorizontalOptions="Fill"
+                         AbsoluteLayout.LayoutBounds="0, 0, 1, 0.07"
+                         AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="CenterAndExpand">
+                    <Frame Style="{StaticResource frame}"
+                           Padding="9">
+                        <Label Text="Таксі"
+                               Style="{StaticResource label}" />
+                    </Frame>
+                    <Frame Style="{StaticResource frame}"
+                           BackgroundColor="Black"
+                           Padding="9">
+                        <Label Text="Доставка"
                                Style="{StaticResource label}"
-                               HorizontalTextAlignment="Center">
-                        </Label>
-                    </StackLayout>
-                    <StackLayout VerticalOptions="Center">
-                        <Image Source="{local:EmbeddedImage RiderApp.Images.business-car2.png}"
-                               WidthRequest="90" />
-                        <Label Text="Бізнес&#10;від 81₴"
+                               TextColor="White" />
+                    </Frame>
+                    <Frame Style="{StaticResource frame}"
+                           BackgroundColor="Black"
+                           Padding="9">
+                        <Label Text="Вантажне таксі"
                                Style="{StaticResource label}"
-                               HorizontalTextAlignment="Center">
-                        </Label>
-                    </StackLayout>
+                               TextColor="White" />
+                    </Frame>
                 </StackLayout>
             </StackLayout>
-            
-        </Frame>
-    </AbsoluteLayout>
+
+            <Frame Style="{StaticResource frame}"
+                   BackgroundColor="White"
+                   VerticalOptions="Fill"
+                   AbsoluteLayout.LayoutBounds="0.08, 0.13, 50, 50"
+                   AbsoluteLayout.LayoutFlags="PositionProportional">
+                <Image Source="{local:EmbeddedImage RiderApp.Images.parameters.png}" />
+            </Frame>
+
+            <Image Source="{local:EmbeddedImage RiderApp.Images.logo.png}"
+                   AbsoluteLayout.LayoutBounds="0.5, 0.13, 150, 60"
+                   AbsoluteLayout.LayoutFlags="PositionProportional" />
+
+            <Frame Style="{StaticResource frame}"
+                   VerticalOptions="Center"
+                   AbsoluteLayout.LayoutBounds="0.92, 0.13, 80, 70"
+                   AbsoluteLayout.LayoutFlags="PositionProportional">
+                <Label Text="Одеса"
+                       TextColor="Black"
+                       FontSize="15"
+                       HorizontalTextAlignment="Center" />
+            </Frame>
+
+            <Frame Style="{StaticResource frame}"
+                   BackgroundColor="White"
+                   AbsoluteLayout.LayoutBounds="0.5, 0.4, 0.85, 63"
+                   AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional">
+                <StackLayout Orientation="Horizontal">
+                    <Entry Placeholder="Знайти адресу"
+                           x:Name="address"
+                           HorizontalOptions="FillAndExpand"
+                           Focused="address_Focused" />
+                    <Image Source="{local:EmbeddedImage RiderApp.Images.gps.png}"
+                           WidthRequest="20" />
+                    <BoxView Color="#e1e1e1"
+                             WidthRequest="1"
+                             VerticalOptions="Fill"
+                             Margin="7" />
+                    <Frame Style="{StaticResource frame}"
+                           WidthRequest="45"
+                           VerticalOptions="Center"
+                           Padding="7">
+                        <Label Text="1 хв."
+                               TextColor="Black"
+                               HorizontalTextAlignment="Center" />
+                    </Frame>
+                </StackLayout>
+            </Frame>
+            <Image Source="{local:EmbeddedImage RiderApp.Images.location.png}"
+                   AbsoluteLayout.LayoutBounds="0.5, 0.467, 0.2, 0.2"
+                   AbsoluteLayout.LayoutFlags="All" />
+
+            <Image Source="{local:EmbeddedImage RiderApp.Images.options.png}"
+                   AbsoluteLayout.LayoutBounds="0.5, 0.92, 0.45, 0.45"
+                   AbsoluteLayout.LayoutFlags="All" />
+            <Frame Style="{StaticResource frame}"
+                   BackgroundColor="White"
+                   VerticalOptions="Fill"
+                   AbsoluteLayout.LayoutBounds="0, 1, 1, 0.26"
+                   AbsoluteLayout.LayoutFlags="All">
+                <StackLayout Margin="10">
+                    <Frame Style="{StaticResource frame}"
+                           HeightRequest="50">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Викликати авто"
+                                   TextColor="Black"
+                                   FontSize="26"
+                                   HorizontalOptions="CenterAndExpand"
+                                   VerticalTextAlignment="Center"
+                                   HorizontalTextAlignment="Center" />
+                            <StackLayout Orientation="Horizontal"
+                                         HorizontalOptions="End">
+                                <BoxView Color="#dea400"
+                                         WidthRequest="1"
+                                         Margin="0, 0, 20, 0" />
+                                <Label Text="+"
+                                       TextColor="Black"
+                                       FontSize="26"
+                                       WidthRequest="40"
+                                       VerticalTextAlignment="Center" />
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal"
+                                 Margin="10"
+                                 Spacing="20"
+                                 VerticalOptions="Center">
+                        <StackLayout VerticalOptions="Center">
+                            <Image Source="{local:EmbeddedImage RiderApp.Images.standard-car.png}"
+                                   WidthRequest="90"
+                                   HeightRequest="50" />
+                            <Label Text="Стандарт&#10;від 60₴"
+                                   Style="{StaticResource label}"
+                                   HorizontalTextAlignment="Center">
+                            </Label>
+                        </StackLayout>
+                        <StackLayout VerticalOptions="Center">
+                            <Image Source="{local:EmbeddedImage RiderApp.Images.business-car2.png}"
+                                   WidthRequest="90" />
+                            <Label Text="Бізнес&#10;від 81₴"
+                                   Style="{StaticResource label}"
+                                   HorizontalTextAlignment="Center">
+                            </Label>
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </AbsoluteLayout>
+    </Grid>
 </ContentPage>

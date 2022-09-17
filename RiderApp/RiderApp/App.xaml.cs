@@ -10,7 +10,10 @@ namespace RiderApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage())
+            {
+                BarBackgroundColor = Color.Black
+            };
         }
 
         protected override void OnStart()
