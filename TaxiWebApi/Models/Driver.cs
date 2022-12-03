@@ -11,14 +11,16 @@ namespace TaxiWebApi.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Patronymic { get; set; }
-        public City City { get; set; }
-        public string DriverLicence { get; set; }
         public DateTime DateOfBrith { get; set; }
+        public City City { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Photo { get; set; }
+        public string DriverLicense { get; set; }
+        public List<DriverOption> DriverOptions { get; set; }
         public string IBAN { get; set; }
         public string PasswordHash { get; set; }
+
         public bool IsOnline { get; set; }
     }
 }
