@@ -1,12 +1,7 @@
 ﻿using RiderApp.Models;
 using RiderApp.Services;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
 using Xamarin.Forms.Xaml;
@@ -17,16 +12,13 @@ namespace RiderApp
     public partial class FindAddressPage : ContentPage
     {
         IGoogleMapsApiService googleMapsApi = new GoogleMapsApiService();
-        string StartLatitude { get; set; }
-        string StartLongitude { get; set; }
-        string EndLatitude { get; set; }
-        string EndLongitude { get; set; }
-
+        double StartLatitude { get; set; }
+        double StartLongitude { get; set; }
+        double EndLatitude { get; set; }
+        double EndLongitude { get; set; }
         bool IsStartFocused { get; set; }
 
         public ObservableCollection<GooglePlaceAutoCompletePrediction> Places { get; set; }
-        public GooglePlace StartPlaceSelected { get; set; }
-        public GooglePlace EndPlaceSelected { get; set; }
         public ObservableCollection<GooglePlaceAutoCompletePrediction> RecentPlaces { get; set; } = new ObservableCollection<GooglePlaceAutoCompletePrediction>();
 
         public bool ShowRecentPlaces { get; set; }
@@ -42,10 +34,20 @@ namespace RiderApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            IsStartFocused = true;
             startLocation.Focus();
+            IsStartFocused = true;
+            addressesListView.ItemsSource = RecentPlaces;
+        }
+        private async void Location_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if((sender as Entry).IsFocused)
+                await GetPlacesByName(e.NewTextValue);
         }
 
+        private async void addressesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            await GetPlacesDetail(e.SelectedItem as GooglePlaceAutoCompletePrediction);
+        }
         public async Task GetPlacesByName(string placeText)
         {
             var places = await googleMapsApi.GetPlaces(placeText);
@@ -53,64 +55,55 @@ namespace RiderApp
             if (placeResult != null && placeResult.Count > 0)
             {
                 Places = new ObservableCollection<GooglePlaceAutoCompletePrediction>(placeResult);
-                addressesListView.ItemsSource = Places;
             }
             
-            ShowRecentPlaces = (placeResult == null || placeResult.Count == 0);            
+            ShowRecentPlaces = (placeResult == null || placeResult.Count == 0);
+            if (!ShowRecentPlaces) 
+                addressesListView.ItemsSource = Places;
+            else
+                addressesListView.ItemsSource = RecentPlaces;
         }
 
         public async Task GetPlacesDetail(GooglePlaceAutoCompletePrediction placeA)
         {
+            addressesListView.ItemsSource = RecentPlaces;
+
             var place = await googleMapsApi.GetPlaceDetails(placeA.PlaceId);
             if (place != null)
             {
                 if (IsStartFocused)
                 {
                     startLocation.Text = placeA.StructuredFormatting.MainText;
-                    StartPlaceSelected = place;
-                    StartLatitude = $"{place.Latitude}";
-                    StartLongitude = $"{place.Longitude}";
-
-                    IsStartFocused = false;
+                    StartLatitude = place.Latitude;
+                    StartLongitude = place.Longitude;
                     endLocation.Focus();
+                    IsStartFocused = false;
                 }
-                else
+                else 
                 {
                     endLocation.Text = placeA.StructuredFormatting.MainText;
-                    EndPlaceSelected = place;
-                    EndLatitude = $"{place.Latitude}";
-                    EndLongitude = $"{place.Longitude}";
+                    EndLatitude = place.Latitude;
+                    EndLongitude = place.Longitude;
+                    startLocation.Focus();
+                    IsStartFocused = true;
+                }
 
-                    RecentPlaces.Add(placeA);
+                RecentPlaces.Add(placeA);
 
+                if(StartLatitude != 0 && EndLatitude != 0)
+                {
                     if (StartLatitude == EndLatitude && StartLongitude == EndLongitude)
                     {
                         await DisplayAlert("Error", "Origin route should be different from destination route", "Ok");
                     }
                     else
                     {
-                        await Navigation.PopAsync(); 
-                        DidFinishPoping(new Position(double.Parse(StartLatitude), double.Parse(StartLongitude)), new Position (double.Parse(EndLatitude), double.Parse(EndLongitude)));
-                        CleanFields();
+                        await Navigation.PopAsync();
+                        DidFinishPoping(new Position(StartLatitude, StartLongitude), new Position(EndLatitude, EndLongitude));
                     }
                 }
+              
             }
-        }
-
-        void CleanFields()
-        {
-            startLocation.Text = endLocation.Text = string.Empty;
-            ShowRecentPlaces = true;
-        }
-
-        private async void Location_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            await GetPlacesByName(e.NewTextValue);
-        }
-
-        private async void addressesListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            await GetPlacesDetail(e.SelectedItem as GooglePlaceAutoCompletePrediction);
         }
     }
 }

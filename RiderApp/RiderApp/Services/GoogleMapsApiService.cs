@@ -59,7 +59,7 @@ namespace RiderApp.Services
 
             using (var httpClient = CreateClient())
             {
-                var response = await httpClient.GetAsync($"api/place/autocomplete/json?input={Uri.EscapeUriString(text)}&key={_googleMapsKey}").ConfigureAwait(false);
+                var response = await httpClient.GetAsync($"api/place/autocomplete/json?input={Uri.EscapeUriString(text)}&key={_googleMapsKey}&components=country:ua&language=uk&location=46.48372400877479, 30.730843193582036&radius=1500").ConfigureAwait(false);
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
