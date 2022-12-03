@@ -25,7 +25,8 @@ namespace TaxiWebApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
         {
-            return await _context.Orders.Include("Rider.Driver.Dispatcher").ToListAsync();
+            return await _context.Orders.Include("Rider.Driver.Administrator.City.Parameters").ToListAsync();
+            //Parameter?
         }
 
         // GET: api/Orders/5
@@ -41,7 +42,9 @@ namespace TaxiWebApi.Controllers
 
             _context.Entry(order).Reference(o => o.Rider).Load();
             _context.Entry(order).Reference(o => o.Driver).Load();
-            _context.Entry(order).Reference(o => o.Dispatcher).Load();
+            _context.Entry(order).Reference(o => o.Administrator).Load();
+            _context.Entry(order).Reference(o => o.Parameters).Load();
+            _context.Entry(order).Reference(o => o.City).Load();
             return order;
         }
 

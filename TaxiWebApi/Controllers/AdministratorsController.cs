@@ -12,49 +12,47 @@ namespace TaxiWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DispatchersController : ControllerBase
+    public class AdministratorsController : ControllerBase
     {
         private readonly TaxiContext _context;
 
-        public DispatchersController(TaxiContext context)
+        public AdministratorsController(TaxiContext context)
         {
             _context = context;
         }
 
-        // GET: api/Dispatchers
+        // GET: api/Administrators
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Dispatcher>>> GetDispatchers()
+        public async Task<ActionResult<IEnumerable<Administrator>>> GetAdministrators()
         {
-            return await _context.Dispatchers.Include("City").ToListAsync();
+            return await _context.Administrators.ToListAsync();
         }
 
-        // GET: api/Dispatchers/5
+        // GET: api/Administrators/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Dispatcher>> GetDispatcher(int id)
+        public async Task<ActionResult<Administrator>> GetAdministrator(int id)
         {
-            var dispatcher = await _context.Dispatchers.FindAsync(id);
+            var administrator = await _context.Administrators.FindAsync(id);
 
-            if (dispatcher == null)
+            if (administrator == null)
             {
                 return NotFound();
             }
 
-            _context.Entry(dispatcher).Reference(d => d.City).Load();
-
-            return dispatcher;
+            return administrator;
         }
 
-        // PUT: api/Dispatchers/5
+        // PUT: api/Administrators/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutDispatcher(int id, Dispatcher dispatcher)
+        public async Task<IActionResult> PutAdministrator(int id, Administrator administrator)
         {
-            if (id != dispatcher.Id)
+            if (id != administrator.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(dispatcher).State = EntityState.Modified;
+            _context.Entry(administrator).State = EntityState.Modified;
 
             try
             {
@@ -75,28 +73,28 @@ namespace TaxiWebApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Dispatchers
+        // POST: api/Administrators
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Dispatcher>> PostDispatcher(Dispatcher dispatcher)
+        public async Task<ActionResult<Administrator>> PostAdministrator(Administrator administrator)
         {
-            _context.Dispatchers.Add(dispatcher);
+            _context.Administrators.Add(administrator);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetDispatcher", new { id = dispatcher.Id }, dispatcher);
+            return CreatedAtAction("GetAdministrator", new { id = administrator.Id }, administrator);
         }
 
-        // DELETE: api/Dispatchers/5
+        // DELETE: api/Administrators/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteDispatcher(int id)
+        public async Task<IActionResult> DeleteAdministrator(int id)
         {
-            var dispatcher = await _context.Dispatchers.FindAsync(id);
+            var dispatcher = await _context.Administrators.FindAsync(id);
             if (dispatcher == null)
             {
                 return NotFound();
             }
 
-            _context.Dispatchers.Remove(dispatcher);
+            _context.Administrators.Remove(dispatcher);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -104,7 +102,7 @@ namespace TaxiWebApi.Controllers
 
         private bool DispatcherExists(int id)
         {
-            return _context.Dispatchers.Any(e => e.Id == id);
+            return _context.Administrators.Any(e => e.Id == id);
         }
     }
 }

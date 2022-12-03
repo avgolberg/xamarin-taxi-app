@@ -25,14 +25,13 @@ namespace TaxiWebApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Driver>>> GetDrivers()
         {
-            return await _context.Drivers.Include("City").ToListAsync();
+            return await _context.Drivers.Include("DriverOptions").ToListAsync();
         }
 
         // GET: api/Drivers/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Driver>> GetDriver(int id)
         {
-            //  var driver = _context.Drivers.Include("City").Where(d => d.Id == id).FirstOrDefault<Driver>();
             var driver = await _context.Drivers.FindAsync(id);
 
             if (driver == null)
@@ -40,7 +39,7 @@ namespace TaxiWebApi.Controllers
                 return NotFound();
             }
 
-            _context.Entry(driver).Reference(d => d.City).Load();
+            _context.Entry(driver).Reference(d => d.DriverOptions).Load();
 
             return driver;
         }

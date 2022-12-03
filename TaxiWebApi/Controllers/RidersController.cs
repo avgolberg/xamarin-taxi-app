@@ -25,7 +25,7 @@ namespace TaxiWebApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Rider>>> GetRiders()
         {
-            return await _context.Riders.Include("City").ToListAsync();
+            return await _context.Riders.ToListAsync();
         }
 
         // GET: api/Riders/5
@@ -38,8 +38,6 @@ namespace TaxiWebApi.Controllers
             {
                 return NotFound();
             }
-
-            _context.Entry(rider).Reference(r => r.City).Load();
 
             return rider;
         }
