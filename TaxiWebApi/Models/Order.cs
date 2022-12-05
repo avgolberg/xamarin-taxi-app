@@ -26,6 +26,7 @@ namespace TaxiWebApi.Models
         public City City { get; set; }
         public string StartLocation { get; set; }
         public string EndLocation { get; set; }
+        public CarType CarType { get; set; }
         public List<Parameter> Parameters { get; set; }
         public Status Status { get; set; }
 
