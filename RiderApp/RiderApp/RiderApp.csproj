@@ -13,13 +13,22 @@
   <ItemGroup>
     <None Remove="Images\business-car.png" />
     <None Remove="Images\business-car2.png" />
+    <None Remove="Images\driver.png" />
+    <None Remove="Images\driver2.png" />
     <None Remove="Images\gps.png" />
     <None Remove="Images\line.png" />
     <None Remove="Images\location.png" />
     <None Remove="Images\logo.png" />
+    <None Remove="Images\minivan.png" />
+    <None Remove="Images\minivan2.png" />
     <None Remove="Images\options.png" />
     <None Remove="Images\parameters.png" />
+    <None Remove="Images\parcel.png" />
+    <None Remove="Images\parcel2.png" />
     <None Remove="Images\standard-car.png" />
+    <None Remove="Images\standard-car2.png" />
+    <None Remove="Images\truck.png" />
+    <None Remove="Images\truck2.png" />
     <None Remove="Images\user-location.png" />
     <None Remove="MapStyle.json" />
   </ItemGroup>
@@ -27,13 +36,22 @@
   <ItemGroup>
     <EmbeddedResource Include="Images\business-car.png" />
     <EmbeddedResource Include="Images\business-car2.png" />
+    <EmbeddedResource Include="Images\driver.png" />
+    <EmbeddedResource Include="Images\driver2.png" />
     <EmbeddedResource Include="Images\gps.png" />
     <EmbeddedResource Include="Images\line.png" />
     <EmbeddedResource Include="Images\location.png" />
     <EmbeddedResource Include="Images\logo.png" />
+    <EmbeddedResource Include="Images\minivan.png" />
+    <EmbeddedResource Include="Images\minivan2.png" />
     <EmbeddedResource Include="Images\options.png" />
     <EmbeddedResource Include="Images\parameters.png" />
+    <EmbeddedResource Include="Images\parcel.png" />
+    <EmbeddedResource Include="Images\parcel2.png" />
     <EmbeddedResource Include="Images\standard-car.png" />
+    <EmbeddedResource Include="Images\standard-car2.png" />
+    <EmbeddedResource Include="Images\truck.png" />
+    <EmbeddedResource Include="Images\truck2.png" />
     <EmbeddedResource Include="MapStyle.json" />
   </ItemGroup>
 
@@ -49,7 +67,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="CalculatePricePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="FindAddressPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="FlyoutMenuPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="MenuPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

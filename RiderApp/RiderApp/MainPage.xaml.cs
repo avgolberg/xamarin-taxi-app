@@ -16,8 +16,8 @@ namespace RiderApp
 {
     public partial class MainPage : ContentPage
     {
-        IGoogleMapsApiService googleMapsApi = new GoogleMapsApiService();    
-
+        IGoogleMapsApiService googleMapsApi = new GoogleMapsApiService();
+        ObservableCollection<Car> vehiclesCollection = new ObservableCollection<Car>();
         public MainPage()
         {
             InitializeComponent();
@@ -25,6 +25,8 @@ namespace RiderApp
         }
         void SetSettings()
         {
+            SetCarTypes();
+
             GoogleMapsApiService.Initialize(Credentials.Credentials.API_KEY);
 
             AddMapStyle();
@@ -32,6 +34,27 @@ namespace RiderApp
             Position position = new Position(46.48372400877479, 30.730843193582036);
             MapSpan mapSpan = MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(15));
             map.MoveToRegion(mapSpan);
+        }
+
+        public class Car
+        {
+            public string Title { get; set; }
+            public ImageSource ImageSource { get; set; }
+
+            public string ImageSourceStr { get; set; }
+        }
+
+        void SetCarTypes()
+        {
+             vehiclesCollection = new ObservableCollection<Car>() { 
+                new Car { Title = "Стандарт" + Environment.NewLine + "від 60₴", ImageSource = ImageSource.FromResource("RiderApp.Images.standard-car.png"), ImageSourceStr="RiderApp.Images.standard-car.png"}, 
+                new Car { Title = "Бізнес" + Environment.NewLine + "від 81₴", ImageSource = ImageSource.FromResource("RiderApp.Images.business-car2.png"), ImageSourceStr="RiderApp.Images.business-car2.png" }, 
+                new Car { Title = "Вантажний" + Environment.NewLine + "від 400₴", ImageSource = ImageSource.FromResource("RiderApp.Images.truck2.png"), ImageSourceStr="RiderApp.Images.truck2.png" }, 
+                new Car { Title = "Мінівен" + Environment.NewLine + "від 120₴", ImageSource = ImageSource.FromResource("RiderApp.Images.minivan2.png"), ImageSourceStr="RiderApp.Images.minivan2.png" }, 
+                new Car { Title = "Посилка" + Environment.NewLine + "від 60₴", ImageSource = ImageSource.FromResource("RiderApp.Images.parcel2.png"), ImageSourceStr="RiderApp.Images.parcel2.png" } ,
+                new Car { Title = "Драйвер" + Environment.NewLine + "їде за кермом" + Environment.NewLine + "вашого авто", ImageSource = ImageSource.FromResource("RiderApp.Images.driver2.png"), ImageSourceStr="RiderApp.Images.driver2.png" },
+            };
+             vehicles.ItemsSource = vehiclesCollection;
         }
 
         void AddMapStyle()
@@ -154,6 +177,32 @@ namespace RiderApp
                 //showRoutePage.IsVisible = true;
             };
             await Navigation.PushAsync(findAddressPage);
+        }
+
+        private void vehicles_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Car car = (sender as CollectionView).SelectedItem as Car;
+            int index = vehiclesCollection.IndexOf(car);
+
+            if (index != -1)
+            {
+                car.ImageSourceStr = car.ImageSourceStr.Remove(car.ImageSourceStr.IndexOf("2"), 1);
+                car.ImageSource = ImageSource.FromResource(car.ImageSourceStr);
+                vehiclesCollection[index] = car;
+
+                for (int i = 0; i < vehiclesCollection.Count; i++)
+                {
+                    if (i != index && !vehiclesCollection[i].ImageSourceStr.Contains("2"))
+                    {
+                        Car notSelected = vehiclesCollection[i];
+                        notSelected.ImageSourceStr = notSelected.ImageSourceStr.Insert(notSelected.ImageSourceStr.LastIndexOf("."), "2");
+                        notSelected.ImageSource = ImageSource.FromResource(notSelected.ImageSourceStr);
+                        vehiclesCollection[i] = notSelected;
+                    }
+                }
+
+                vehicles.ItemsSource = vehiclesCollection;
+            }
         }
     }
 }
