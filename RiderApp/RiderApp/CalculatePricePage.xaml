@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local1="clr-namespace:RiderApp.MarkupExtensions"
+            x:Class="RiderApp.CalculatePricePage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="frame"
+                   TargetType="Frame">
+                <Setter Property="HasShadow"
+                        Value="False" />
+                <Setter Property="Padding"
+                        Value="11" />
+                <Setter Property="CornerRadius"
+                        Value="30" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout Margin="40">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Розрахувати ціну"
+                   FontSize="25"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   HorizontalOptions="StartAndExpand" />
+            <Image Source="{local1:EmbeddedImage RiderApp.Images.close.png}"
+                   HeightRequest="20"
+                   WidthRequest="20"
+                   HorizontalOptions="End">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseTapped"
+                                          NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+
+        <StackLayout Margin="0, 30">
+            <Frame Style="{StaticResource frame}"
+                   BorderColor="#E2E2E2"
+                   Padding="8">
+                <Entry x:Name="startLocation"
+                       Placeholder="Звідки"
+                       HorizontalTextAlignment="Center"/>
+            </Frame>
+            <Frame Style="{StaticResource frame}"
+                   BorderColor="#E2E2E2"
+                   Padding="8">
+                <Entry x:Name="endLocation"
+                       Placeholder="Куди"
+                       HorizontalTextAlignment="Center" />
+            </Frame>
+        </StackLayout>
+        
+        <Label x:Name="priceLabel"
+               IsVisible="false"
+               Margin="20"
+               FontSize="18"
+               LineBreakMode="WordWrap"
+               HorizontalTextAlignment="Center"
+               TextColor="Black"
+               />
+        
+        <Frame Style="{StaticResource frame}"
+               BackgroundColor="#ffc600"
+               Margin="0, 30">
+            <Label Text="Викликати авто"
+                   TextColor="#dea400"
+                   FontSize="25"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalTextAlignment="Center"
+                   HorizontalTextAlignment="Center" />
+        </Frame>
+
+        <Label Text="Тарифи"
+               TextColor="#27B8FF"
+               FontSize="20"
+               Margin="0, 30"
+               VerticalTextAlignment="Center"
+               HorizontalTextAlignment="Center" />
+
+    </StackLayout>
+        
+</ContentPage>
