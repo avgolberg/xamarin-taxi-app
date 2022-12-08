@@ -33,30 +33,33 @@
     </ContentPage.Resources>
 
     <Grid>
-        <AbsoluteLayout x:Name="makeOrderPage"
-                        IsVisible="true">
+        <AbsoluteLayout>
             <maps:Map x:Name="map"
                       AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
                       AbsoluteLayout.LayoutFlags="All" />
 
             <Frame Style="{StaticResource frame}"
-                   AbsoluteLayout.LayoutBounds="0.08, 0.07, 50, 50"
-                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   AbsoluteLayout.LayoutBounds="0.08, 55, 50, 50"
+                   AbsoluteLayout.LayoutFlags="XProportional"
                    BackgroundColor="White"
                    VerticalOptions="Fill">
                 <Image Source="{local:EmbeddedImage RiderApp.Images.parameters.png}"
                        WidthRequest="30"
                        HeightRequest="30" />
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ParametersTapped"
+                                          NumberOfTapsRequired="1" />
+                </Frame.GestureRecognizers>
             </Frame>
 
             <Image Source="{local:EmbeddedImage RiderApp.Images.logo.png}"
-                   AbsoluteLayout.LayoutBounds="0.4, 0.07, 0.9, 50"
-                   AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional" />
+                   AbsoluteLayout.LayoutBounds="0.5, 55, 200, 50"
+                   AbsoluteLayout.LayoutFlags="XProportional"/>
 
             <Frame Style="{StaticResource frame}"
                    VerticalOptions="Center"
-                   AbsoluteLayout.LayoutBounds="0.95, 0.07, 0.2, 50"
-                   AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional">
+                   AbsoluteLayout.LayoutBounds="0.95, 55, 0.2, 50"
+                   AbsoluteLayout.LayoutFlags="XProportional,WidthProportional">
                 <Label Text="Одеса"
                        TextColor="Black"
                        FontSize="15"
@@ -96,14 +99,14 @@
                        BackgroundColor="Transparent" />
             </StackLayout>
 
-            <StackLayout AbsoluteLayout.LayoutBounds="0.5, 0.92, 300, 200"
+            <StackLayout AbsoluteLayout.LayoutBounds="0.5, 0.87, 250, 200"
                          AbsoluteLayout.LayoutFlags="PositionProportional">
                 <Image Source="{local:EmbeddedImage RiderApp.Images.options.png}"
                        BackgroundColor="Transparent" />
             </StackLayout>
 
-            <StackLayout AbsoluteLayout.LayoutBounds="0, 1, 1, 0.3"
-                         AbsoluteLayout.LayoutFlags="All,WidthProportional"
+            <StackLayout AbsoluteLayout.LayoutBounds="0, 1, 1, 0.3" 
+                         AbsoluteLayout.LayoutFlags="All"
                          BackgroundColor="Transparent">
                 <Frame Style="{StaticResource frame}"
                        BackgroundColor="White"

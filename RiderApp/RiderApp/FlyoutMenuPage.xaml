@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:RiderApp"
+             xmlns:local1="clr-namespace:RiderApp.MarkupExtensions"
+             Title="FlyoutMenu"
+             x:Class="RiderApp.FlyoutMenuPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="18" />
+                <Setter Property="TextColor"
+                        Value="Black" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Margin="40">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Налаштування" 
+                   FontSize="25" 
+                   FontAttributes="Bold"
+                   HorizontalOptions="StartAndExpand" />
+            <Image Source="{local1:EmbeddedImage RiderApp.Images.close.png}"
+                   HeightRequest="20"
+                   WidthRequest="20"
+                   HorizontalOptions="End">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseTapped"
+                                          NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+        <ListView x:Name="listview"
+                  x:FieldModifier="public"
+                  SeparatorVisibility="None"
+                  HasUnevenRows="True"
+                  Margin="20">
+            <ListView.ItemsSource>
+                <x:Array Type="{x:Type local:MenuItem}">
+                    <local:MenuItem Title="Параметри"
+                                    TargetPage="{x:Type local:CalculatePricePage}" />
+                    <local:MenuItem Title="Розрахувати ціну"
+                                    TargetPage="{x:Type local:CalculatePricePage}" />
+                    <local:MenuItem Title="Рахунок та картки"
+                                    TargetPage="{x:Type local:CalculatePricePage}" />
+                    <local:MenuItem Title="Історія замовлень"
+                                    TargetPage="{x:Type local:CalculatePricePage}" />
+                    <local:MenuItem Title="Відкрити відгук"
+                                    TargetPage="{x:Type local:CalculatePricePage}" />
+                    <local:MenuItem Title="Додати сім'ю"
+                                    TargetPage="{x:Type local:CalculatePricePage}" />
+                    <local:MenuItem Title="Для бізнесу"
+                                    TargetPage="{x:Type local:CalculatePricePage}" />
+                </x:Array>
+            </ListView.ItemsSource>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="{Binding Title}"
+                                   Margin="15" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Margin="20">
+            <Label Text="+38 (000) 000-00-00"
+                   TextColor="LightGray" />
+            <Label Text="Видалити профіль"
+                   TextColor="Red">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="DeleteTappedAsync"
+                                          NumberOfTapsRequired="1" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

@@ -204,5 +204,11 @@ namespace RiderApp
                 vehicles.ItemsSource = vehiclesCollection;
             }
         }
+
+        private void ParametersTapped(object sender, EventArgs e)
+        {
+            FlyoutPage menu = (FlyoutPage)Application.Current.MainPage;
+            menu.IsPresented = true;
+        }
     }
 }

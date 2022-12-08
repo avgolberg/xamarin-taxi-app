@@ -6,14 +6,14 @@ namespace RiderApp
 {
     public partial class App : Application
     {
+        public static NavigationPage mainPage;
         public App()
         {
             InitializeComponent();
-
-            MainPage = new NavigationPage(new MainPage())
-            {
-                BarBackgroundColor = Color.Black
-            };
+            MainPage = new MenuPage();
+            FlyoutPage menu = (FlyoutPage) MainPage;
+            mainPage = menu.Detail as NavigationPage;
+            mainPage.BarBackgroundColor = Color.Black;
         }
 
         protected override void OnStart()
