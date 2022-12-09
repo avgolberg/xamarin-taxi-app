@@ -3,7 +3,7 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:local1="clr-namespace:RiderApp.MarkupExtensions"
             x:Class="RiderApp.CalculatePricePage"
-             NavigationPage.HasNavigationBar="False">
+            NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style x:Key="frame"
@@ -11,20 +11,27 @@
                 <Setter Property="HasShadow"
                         Value="False" />
                 <Setter Property="Padding"
-                        Value="11" />
+                        Value="8" />
                 <Setter Property="CornerRadius"
                         Value="30" />
                 <Setter Property="VerticalOptions"
                         Value="Center" />
+                <Setter Property="BorderColor"
+                        Value="#E2E2E2"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="18" />
+                <Setter Property="TextColor"
+                        Value="Black" />
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
     <StackLayout Margin="40">
         <StackLayout Orientation="Horizontal">
             <Label Text="Розрахувати ціну"
                    FontSize="25"
-                   TextColor="Black"
                    FontAttributes="Bold"
                    HorizontalOptions="StartAndExpand" />
             <Image Source="{local1:EmbeddedImage RiderApp.Images.close.png}"
@@ -39,49 +46,89 @@
         </StackLayout>
 
         <StackLayout Margin="0, 30">
-            <Frame Style="{StaticResource frame}"
-                   BorderColor="#E2E2E2"
-                   Padding="8">
+            <Frame Style="{StaticResource frame}">
                 <Entry x:Name="startLocation"
                        Placeholder="Звідки"
-                       HorizontalTextAlignment="Center"/>
+                       HorizontalTextAlignment="Center"
+                       TextChanged="Location_TextChanged" />
             </Frame>
-            <Frame Style="{StaticResource frame}"
-                   BorderColor="#E2E2E2"
-                   Padding="8">
+            <Frame Style="{StaticResource frame}">
                 <Entry x:Name="endLocation"
                        Placeholder="Куди"
-                       HorizontalTextAlignment="Center" />
+                       HorizontalTextAlignment="Center"
+                       TextChanged="Location_TextChanged" />
             </Frame>
         </StackLayout>
-        
+
+        <ListView x:Name="addressesListView"
+                  SeparatorColor="Gray"
+                  HasUnevenRows="True"
+                  ItemSelected="addressesListView_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="15"
+                              RowSpacing="2"
+                              ColumnSpacing="15">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label LineBreakMode="MiddleTruncation"
+                                   Text="{Binding StructuredFormatting.MainText}"
+                                   Grid.Row="0"
+                                   Grid.Column="1" />
+
+                            <Label LineBreakMode="MiddleTruncation"
+                                   Text="{Binding StructuredFormatting.SecondaryText}"
+                                   TextColor="Gray"
+                                   Grid.Row="1"
+                                   Grid.Column="1" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
         <Label x:Name="priceLabel"
-               IsVisible="false"
                Margin="20"
-               FontSize="18"
                LineBreakMode="WordWrap"
                HorizontalTextAlignment="Center"
-               TextColor="Black"
-               />
-        
-        <Frame Style="{StaticResource frame}"
+               IsVisible="false" />
+
+        <Frame x:Name="orderFrame"
+               Style="{StaticResource frame}"
+               Margin="0, 30"
                BackgroundColor="#ffc600"
-               Margin="0, 30">
-            <Label Text="Викликати авто"
-                   TextColor="#dea400"
+               BorderColor="#ffc600"
+               IsEnabled="false">
+            <Label x:Name="orderLabel"
+                   Text="Викликати авто"
                    FontSize="25"
-                   HorizontalOptions="CenterAndExpand"
-                   VerticalTextAlignment="Center"
+                   TextColor="#dea400"
                    HorizontalTextAlignment="Center" />
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OrderTapped"
+                                      NumberOfTapsRequired="1" />
+            </Frame.GestureRecognizers>
         </Frame>
 
-        <Label Text="Тарифи"
+        <Label x:Name="tariffsLabel"
+               Text="Тарифи"
+               Margin="0, 30"
                TextColor="#27B8FF"
                FontSize="20"
-               Margin="0, 30"
-               VerticalTextAlignment="Center"
-               HorizontalTextAlignment="Center" />
-
+               HorizontalTextAlignment="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TariffsTapped"
+                                      NumberOfTapsRequired="1" />
+            </Label.GestureRecognizers>
+        </Label>
     </StackLayout>
-        
 </ContentPage>

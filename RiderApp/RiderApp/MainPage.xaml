@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
              xmlns:local="clr-namespace:RiderApp.MarkupExtensions"
              x:Class="RiderApp.MainPage"
              NavigationPage.HasNavigationBar="False">
@@ -33,11 +32,7 @@
     </ContentPage.Resources>
 
     <Grid>
-        <AbsoluteLayout>
-            <maps:Map x:Name="map"
-                      AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
-                      AbsoluteLayout.LayoutFlags="All" />
-
+        <AbsoluteLayout x:Name="layout">
             <Frame Style="{StaticResource frame}"
                    AbsoluteLayout.LayoutBounds="0.08, 55, 50, 50"
                    AbsoluteLayout.LayoutFlags="XProportional"

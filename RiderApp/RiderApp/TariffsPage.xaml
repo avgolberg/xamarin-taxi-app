@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local1="clr-namespace:RiderApp.MarkupExtensions"
+             x:Class="RiderApp.TariffsPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="Margin"
+                        Value="5" />
+                <Setter Property="FontSize"
+                        Value="18" />
+                <Setter Property="TextColor"
+                        Value="Black" />
+                <Setter Property="LineBreakMode"
+                        Value="WordWrap" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Margin="40">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Тарифи"
+                   FontSize="25"
+                   FontAttributes="Bold"
+                   HorizontalOptions="StartAndExpand" />
+            <Image Source="{local1:EmbeddedImage RiderApp.Images.close.png}"
+                   HeightRequest="20"
+                   WidthRequest="20"
+                   HorizontalOptions="End">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseTapped"
+                                          NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout Margin="0,30">
+                    <Label Text=" • Мінімальне замовлення — 60.00₴ (в ціну включено 1 км.)" />
+                    <Label Text=" • 1 км. містом — 11₴ (11₴ з 7 км.)" />
+                    <Label Text=" • 1 хв. очікування — 2.5₴" />
+                    <Label Text=" • Безкоштовний час очікування після приїзду авто — 5 хв." />
+                    <Label Text=" • Зупинка на маршруті коротша 4 хв. — 10₴" />
+                </StackLayout>
+                <StackLayout Margin="0,20">
+                    <Label Text="Додаткові послуги" />
+                    <Label Text=" • Безкоштовний час після приїзду авто при замовленні на конкретний час — 1 хв." />
+                    <Label Text=" • З 7 до 9 утра в робочі дні на Таїрова, Черьомушках та Фонтані — +10 ₴." />
+                    <Label Text=" • Замовлення на певний час — +5 ₴" />
+                    <Label Text=" • 1 км. за межою роботи таксі — 14.00₴ (17₴ з 20 км.)
+" />
+                    <Label Text=" • Приїзд авто (при відмовленні від замовлення) — 40₴" />
+                    <Label Text=" • Поїздка з кондиціонером — +15% (мин 5₴)" />
+                    <Label Text=" • Провезення тварин — ціна × 1.3" />
+                    <Label Text=" • 5 пасажирів в авто, багаж у салоні — × 1,5" />
+                    <Label Text=" • Дитяче автокрісло — + 30 ₴" />
+                    <Label Text=" • Очікування у пробці — 2.5₴/хв. (Перші 5 хвилин безкоштовно, не більше 25% від ціни замовлення)" />
+                    <Label Text=" • Доплата за пляжні замовлення — 20₴" />
+                    <Label Text=" • Мікроавтобус — ціна × 2" />
+                    <Label Text=" • Бізнес-клас — ціна × 1.4;" />
+                    <Label Text=" • В замовленнях по місту, які йдуть більше години, одна хвилина очікування починаючи з 20-ої — 3₴" />
+                    <Label Text=" • «Тверезий водій» — ціна × 3" />
+                    <Label Text="При дуже поганій погоді або на свята можливе збільшення тарифів. Подача машини за місто оплачується додатково." />
+                    <Label Text="При поїздках за місто потрібно обов'язково вказати кінцеву адресу" />
+                    <Label Text="Безготівковий розрахунок для юридичних осіб і підприємців - + 5%" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+</ContentPage>

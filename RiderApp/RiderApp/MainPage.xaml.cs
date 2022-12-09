@@ -17,16 +17,10 @@ namespace RiderApp
     public partial class MainPage : ContentPage
     {
         IGoogleMapsApiService googleMapsApi = new GoogleMapsApiService();
-        ObservableCollection<Car> vehiclesCollection = new ObservableCollection<Car>();
-        public MainPage()
+        static ObservableCollection<Car> vehiclesCollection = new ObservableCollection<Car>();
+        static Map map = new Map();
+        static MainPage()
         {
-            InitializeComponent();
-            SetSettings();
-        }
-        void SetSettings()
-        {
-            SetCarTypes();
-
             GoogleMapsApiService.Initialize(Credentials.Credentials.API_KEY);
 
             AddMapStyle();
@@ -34,6 +28,19 @@ namespace RiderApp
             Position position = new Position(46.48372400877479, 30.730843193582036);
             MapSpan mapSpan = MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(15));
             map.MoveToRegion(mapSpan);
+
+            AbsoluteLayout.SetLayoutBounds(map, new Rectangle(0, 0, 1, 1));
+            AbsoluteLayout.SetLayoutFlags(map, AbsoluteLayoutFlags.All);
+
+            SetCarTypes();
+        }
+        public MainPage()
+        {
+            InitializeComponent();
+
+            layout.Children.Insert(0, map);
+
+            vehicles.ItemsSource = vehiclesCollection;
         }
 
         public class Car
@@ -44,7 +51,7 @@ namespace RiderApp
             public string ImageSourceStr { get; set; }
         }
 
-        void SetCarTypes()
+        static void SetCarTypes()
         {
              vehiclesCollection = new ObservableCollection<Car>() { 
                 new Car { Title = "Стандарт" + Environment.NewLine + "від 60₴", ImageSource = ImageSource.FromResource("RiderApp.Images.standard-car.png"), ImageSourceStr="RiderApp.Images.standard-car.png"}, 
@@ -54,10 +61,9 @@ namespace RiderApp
                 new Car { Title = "Посилка" + Environment.NewLine + "від 60₴", ImageSource = ImageSource.FromResource("RiderApp.Images.parcel2.png"), ImageSourceStr="RiderApp.Images.parcel2.png" } ,
                 new Car { Title = "Драйвер" + Environment.NewLine + "їде за кермом" + Environment.NewLine + "вашого авто", ImageSource = ImageSource.FromResource("RiderApp.Images.driver2.png"), ImageSourceStr="RiderApp.Images.driver2.png" },
             };
-             vehicles.ItemsSource = vehiclesCollection;
         }
 
-        void AddMapStyle()
+        static void AddMapStyle()
         {
             var assembly = typeof(MainPage).GetTypeInfo().Assembly;
             var stream = assembly.GetManifestResourceStream($"RiderApp.MapStyle.json");
@@ -74,7 +80,6 @@ namespace RiderApp
 
             map.UiSettings.ZoomControlsEnabled = false;
         }
-
 
         public async void LoadRoute(Position start, Position end)
         {
