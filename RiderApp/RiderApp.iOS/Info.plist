@@ -68,5 +68,9 @@
   <string>We would like to show you a map</string>
   <key>NSLocationAlwaysUsageDescription</key>
   <string>We would like to show you a map</string>
+  <key>NSPhotoLibraryUsageDescription</key>
+  <string>This app would like to access your photos</string>
+  <key>NSCameraUsageDescription</key>
+  <string>This app would like to take pictures</string>
 </dict>
 </plist>

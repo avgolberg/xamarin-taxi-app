@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local1="clr-namespace:RiderApp.MarkupExtensions"
+             x:Class="RiderApp.ReviewPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="frame"
+                   TargetType="Frame">
+                <Setter Property="HasShadow"
+                        Value="False" />
+                <Setter Property="Padding"
+                        Value="11" />
+                <Setter Property="CornerRadius"
+                        Value="30" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Margin="40">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Відправити відгук"
+                   FontSize="25"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   HorizontalOptions="StartAndExpand" />
+            <Image Source="{local1:EmbeddedImage RiderApp.Images.close.png}"
+                   HeightRequest="20"
+                   WidthRequest="20"
+                   HorizontalOptions="End">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseTapped"
+                                          NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+
+        <StackLayout Margin="0, 30, 0, 10"
+                     HeightRequest="250">
+            <Frame Style="{StaticResource frame}"
+                   BorderColor="#E2E2E2"
+                   Padding="14"
+                   VerticalOptions="FillAndExpand">
+                <Editor x:Name="text"
+                        VerticalOptions="FillAndExpand"/>
+            </Frame>
+        </StackLayout>
+        <Label x:Name="AddPhotoLabel"
+               Text="Прикріпити фото"
+               Margin="0, 20"
+               TextColor="#27B8FF"
+               FontSize="20"
+               HorizontalTextAlignment="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="AddPhotoTapped"
+                                      NumberOfTapsRequired="1" />
+            </Label.GestureRecognizers>
+        </Label>
+        <ScrollView>
+            <StackLayout x:Name="photos" />
+        </ScrollView>
+        <Frame Style="{StaticResource frame}"
+               BackgroundColor="#ffc600"
+               Margin="0, 30">
+            <Label x:Name="sendLabel"
+                   Text="Відправити"
+                   TextColor="Black"
+                   FontSize="25"
+                   HorizontalTextAlignment="Center" />
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="SendTapped"
+                                      NumberOfTapsRequired="1" />
+            </Frame.GestureRecognizers>
+        </Frame>
+    </StackLayout>
+</ContentPage>

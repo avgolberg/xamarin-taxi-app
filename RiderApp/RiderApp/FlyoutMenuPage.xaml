@@ -46,8 +46,8 @@
                                     TargetPage="{x:Type local:CalculatePricePage}" />
                     <local:MenuItem Title="Історія замовлень"
                                     TargetPage="{x:Type local:CalculatePricePage}" />
-                    <local:MenuItem Title="Відкрити відгук"
-                                    TargetPage="{x:Type local:CalculatePricePage}" />
+                    <local:MenuItem Title="Відправити відгук"
+                                    TargetPage="{x:Type local:ReviewPage}" />
                     <local:MenuItem Title="Додати сім'ю"
                                     TargetPage="{x:Type local:CalculatePricePage}" />
                     <local:MenuItem Title="Для бізнесу"

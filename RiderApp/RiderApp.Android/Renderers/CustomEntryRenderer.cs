@@ -7,13 +7,13 @@ using Android.Content.Res;
 using Android.Graphics;
 using Android.MyRenderers;
 
-[assembly: ExportRenderer(typeof(Entry), typeof(MyRenderers))]
+[assembly: ExportRenderer(typeof(Entry), typeof(CustomEntryRenderer))]
 namespace Android.MyRenderers
 {
-    public class MyRenderers : EntryRenderer
+    public class CustomEntryRenderer : EntryRenderer
     {
 
-        public MyRenderers(Context context) : base(Android.App.Application.Context)
+        public CustomEntryRenderer(Context context) : base(Android.App.Application.Context)
         {
 
         }

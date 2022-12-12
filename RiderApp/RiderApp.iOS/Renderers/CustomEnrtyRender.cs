@@ -5,10 +5,10 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(Entry), typeof(MyEntryRenderer))]
+[assembly: ExportRenderer(typeof(Entry), typeof(CustomEntryRenderer))]
 namespace iOS.MyRenderers
 {
-    public class MyEntryRenderer : EntryRenderer
+    public class CustomEntryRenderer : EntryRenderer
     {
         private CALayer _line;
 
