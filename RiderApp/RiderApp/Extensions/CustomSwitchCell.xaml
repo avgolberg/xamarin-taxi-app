@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+          xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+          xmlns:local1="clr-namespace:RiderApp.MarkupExtensions"
+          x:Class="RiderApp.Extensions.CustomSwitchCell"
+          Tapped="SwitchTapped"
+          Height="50">
+    <StackLayout Orientation="Horizontal"
+                 Margin="10">
+        <Label Text="{Binding Label}"
+               FontSize="{Binding FontSize}"
+               VerticalOptions="Center" />
+        <Image x:Name="circle"
+               Source="{local1:EmbeddedImage RiderApp.Images.circle.png}"
+               HeightRequest="15"
+               WidthRequest="15"
+               HorizontalOptions="EndAndExpand"
+               IsVisible="{Binding IsToggled}" />
+    </StackLayout>
+</ViewCell>

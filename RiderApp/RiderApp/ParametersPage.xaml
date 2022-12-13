@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local1="clr-namespace:RiderApp.MarkupExtensions"
+             xmlns:extensions="clr-namespace:RiderApp.Extensions"
+             x:Class="RiderApp.ParametersPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="18" />
+                <Setter Property="TextColor"
+                        Value="Black" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Margin="40">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Параметри"
+                   FontSize="25"
+                   FontAttributes="Bold"
+                   HorizontalOptions="StartAndExpand" />
+            <Image Source="{local1:EmbeddedImage RiderApp.Images.close.png}"
+                   HeightRequest="20"
+                   WidthRequest="20"
+                   HorizontalOptions="End">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseTapped"
+                                          NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+        <TableView Intent="Settings"
+                   Margin="0,30"
+                   HasUnevenRows="True">
+            <TableRoot>
+                <TableSection>
+                    <ViewCell Tapped="notifications_Tapped"
+                              Height="70">
+                        <StackLayout Orientation="Horizontal"
+                                     Margin="10">
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label Text="Сповіщення"
+                                       FontSize="18" />
+                                <Label x:Name="notifications"
+                                       Text="Push-сповіщення"
+                                       FontSize="14"
+                                       TextColor="Gray" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="EndAndExpand"
+                                         VerticalOptions="Center">
+                                <Image Source="{local1:EmbeddedImage RiderApp.Images.arrow.png}"
+                                       HeightRequest="20"
+                                       WidthRequest="20" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                    <extensions:CustomSwitchCell Label="Не телефонувати мені" />
+                    <extensions:CustomSwitchCell Label="Мовчазний водій" />
+                    <extensions:CustomSwitchCell Label="Англомовний водій" />
+                    <extensions:CustomSwitchCell Label="Користуюся ремнями позаду" />
+                    <extensions:CustomSwitchCell Label="Я не чую" />
+                    <extensions:CustomSwitchCell Label="Авто української реєстрації" />
+                    <ViewCell Tapped="languages_Tapped"
+                              Height="70">
+                        <StackLayout Orientation="Horizontal"
+                                     Margin="10">
+                            <StackLayout HorizontalOptions="StartAndExpand">
+                                <Label Text="Мова"
+                                       FontSize="18" />
+                                <Label x:Name="language"
+                                       Text="Українська"
+                                       FontSize="14"
+                                       TextColor="Gray" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="EndAndExpand"
+                                         VerticalOptions="Center">
+                                <Image Source="{local1:EmbeddedImage RiderApp.Images.arrow.png}"
+                                       HeightRequest="20"
+                                       WidthRequest="20" />
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </StackLayout>
+</ContentPage>

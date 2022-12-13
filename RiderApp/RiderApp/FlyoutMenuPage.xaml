@@ -39,7 +39,7 @@
             <ListView.ItemsSource>
                 <x:Array Type="{x:Type local:MenuItem}">
                     <local:MenuItem Title="Параметри"
-                                    TargetPage="{x:Type local:CalculatePricePage}" />
+                                    TargetPage="{x:Type local:ParametersPage}" />
                     <local:MenuItem Title="Розрахувати ціну"
                                     TargetPage="{x:Type local:CalculatePricePage}" />
                     <local:MenuItem Title="Рахунок та картки"
@@ -49,7 +49,7 @@
                     <local:MenuItem Title="Відправити відгук"
                                     TargetPage="{x:Type local:ReviewPage}" />
                     <local:MenuItem Title="Додати сім'ю"
-                                    TargetPage="{x:Type local:CalculatePricePage}" />
+                                    TargetPage="{x:Type local:FamilyPage}" />
                     <local:MenuItem Title="Для бізнесу"
                                     TargetPage="{x:Type local:CalculatePricePage}" />
                 </x:Array>

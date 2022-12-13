@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local1="clr-namespace:RiderApp.MarkupExtensions"
+             x:Class="RiderApp.FamilyPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="frame"
+                   TargetType="Frame">
+                <Setter Property="HasShadow"
+                        Value="False" />
+                <Setter Property="Padding"
+                        Value="11" />
+                <Setter Property="CornerRadius"
+                        Value="30" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="18" />
+                <Setter Property="TextColor"
+                        Value="Black" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Margin="40">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Додати сім'ю"
+                   FontSize="25"
+                   TextColor="Black"
+                   FontAttributes="Bold"
+                   HorizontalOptions="StartAndExpand" />
+            <Image Source="{local1:EmbeddedImage RiderApp.Images.close.png}"
+                   HeightRequest="20"
+                   WidthRequest="20"
+                   HorizontalOptions="End">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseTapped"
+                                          NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+        <Label Text="Члени сім'ї можуть їздити за гроші з вашого рахунку або картки."
+               Margin="0,30"/>
+        <Label Text="Додати номер телефону члена сім'ї:" />
+        <Frame Style="{StaticResource frame}"
+               BorderColor="#E2E2E2"
+               Margin="0,10">
+            <Entry x:Name="phone"
+                   HorizontalTextAlignment="Center"
+                   Keyboard="Telephone"/>
+        </Frame>
+        <Frame Style="{StaticResource frame}"
+               BackgroundColor="#ffc600"
+               Margin="0, 20">
+            <Label x:Name="sendLabel"
+                   Text="Додати"
+                   TextColor="Black"
+                   FontSize="25"
+                   HorizontalTextAlignment="Center" />
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="AddTapped"
+                                      NumberOfTapsRequired="1" />
+            </Frame.GestureRecognizers>
+        </Frame>
+    </StackLayout>
+</ContentPage>
