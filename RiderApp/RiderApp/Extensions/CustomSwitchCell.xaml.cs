@@ -29,12 +29,20 @@ namespace RiderApp.Extensions
             set { SetValue(FontSizeProperty, value); }
         }
 
+        public static readonly BindableProperty TextColorProperty = BindableProperty.Create("TextColor", typeof(Color), typeof(CustomSwitchCell));
+        public Color TextColor
+        {
+            get { return (Color)GetValue(TextColorProperty); }
+            set { SetValue(TextColorProperty, value); }
+        }
+
         public CustomSwitchCell()
         {
             InitializeComponent();
             BindingContext = this;
             IsToggled = false;
             FontSize = 18;
+            TextColor = Color.Black;
         }
         private void SwitchTapped(object sender, EventArgs e)
         {

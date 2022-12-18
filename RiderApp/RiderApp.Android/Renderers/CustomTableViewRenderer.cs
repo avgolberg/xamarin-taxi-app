@@ -3,12 +3,12 @@ using RiderApp.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(TableView), typeof(CustomTableViewRender))]
+[assembly: ExportRenderer(typeof(TableView), typeof(CustomTableViewRenderer))]
 namespace RiderApp.Droid.Renderers
 {
-    class CustomTableViewRender : TableViewRenderer
+    class CustomTableViewRenderer : TableViewRenderer
     {
-        public CustomTableViewRender(Context context) : base(Android.App.Application.Context)
+        public CustomTableViewRenderer(Context context) : base(Android.App.Application.Context)
         {
 
         }

@@ -9,6 +9,7 @@
                  Margin="10">
         <Label Text="{Binding Label}"
                FontSize="{Binding FontSize}"
+               TextColor="{Binding TextColor}"
                VerticalOptions="Center" />
         <Image x:Name="circle"
                Source="{local1:EmbeddedImage RiderApp.Images.circle.png}"

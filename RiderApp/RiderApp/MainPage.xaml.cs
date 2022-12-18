@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.CommunityToolkit.Extensions;
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
 
@@ -19,6 +20,8 @@ namespace RiderApp
         IGoogleMapsApiService googleMapsApi = new GoogleMapsApiService();
         static ObservableCollection<Car> vehiclesCollection = new ObservableCollection<Car>();
         static Map map = new Map();
+        bool IsExpanded = false;
+
         static MainPage()
         {
             GoogleMapsApiService.Initialize(Credentials.Credentials.API_KEY);
@@ -53,11 +56,11 @@ namespace RiderApp
 
         static void SetCarTypes()
         {
-             vehiclesCollection = new ObservableCollection<Car>() { 
-                new Car { Title = "Стандарт" + Environment.NewLine + "від 60₴", ImageSource = ImageSource.FromResource("RiderApp.Images.standard-car.png"), ImageSourceStr="RiderApp.Images.standard-car.png"}, 
-                new Car { Title = "Бізнес" + Environment.NewLine + "від 81₴", ImageSource = ImageSource.FromResource("RiderApp.Images.business-car2.png"), ImageSourceStr="RiderApp.Images.business-car2.png" }, 
-                new Car { Title = "Вантажний" + Environment.NewLine + "від 400₴", ImageSource = ImageSource.FromResource("RiderApp.Images.truck2.png"), ImageSourceStr="RiderApp.Images.truck2.png" }, 
-                new Car { Title = "Мінівен" + Environment.NewLine + "від 120₴", ImageSource = ImageSource.FromResource("RiderApp.Images.minivan2.png"), ImageSourceStr="RiderApp.Images.minivan2.png" }, 
+            vehiclesCollection = new ObservableCollection<Car>() {
+                new Car { Title = "Стандарт" + Environment.NewLine + "від 60₴", ImageSource = ImageSource.FromResource("RiderApp.Images.standard-car.png"), ImageSourceStr="RiderApp.Images.standard-car.png"},
+                new Car { Title = "Бізнес" + Environment.NewLine + "від 81₴", ImageSource = ImageSource.FromResource("RiderApp.Images.business-car2.png"), ImageSourceStr="RiderApp.Images.business-car2.png" },
+                new Car { Title = "Вантажний" + Environment.NewLine + "від 400₴", ImageSource = ImageSource.FromResource("RiderApp.Images.truck2.png"), ImageSourceStr="RiderApp.Images.truck2.png" },
+                new Car { Title = "Мінівен" + Environment.NewLine + "від 120₴", ImageSource = ImageSource.FromResource("RiderApp.Images.minivan2.png"), ImageSourceStr="RiderApp.Images.minivan2.png" },
                 new Car { Title = "Посилка" + Environment.NewLine + "від 60₴", ImageSource = ImageSource.FromResource("RiderApp.Images.parcel2.png"), ImageSourceStr="RiderApp.Images.parcel2.png" } ,
                 new Car { Title = "Драйвер" + Environment.NewLine + "їде за кермом" + Environment.NewLine + "вашого авто", ImageSource = ImageSource.FromResource("RiderApp.Images.driver2.png"), ImageSourceStr="RiderApp.Images.driver2.png" },
             };
@@ -156,7 +159,7 @@ namespace RiderApp
                 Address = "First",
                 Tag = string.Empty
                 // Icon = BitmapDescriptorFactory.FromView(new Image() { Source = "ic_taxi.png", WidthRequest = 25, HeightRequest = 25 }
-               //)
+                //)
             };
             map.Pins.Add(pin);
             var pin1 = new Pin
@@ -214,6 +217,40 @@ namespace RiderApp
         {
             FlyoutPage menu = (FlyoutPage)Application.Current.MainPage;
             menu.IsPresented = true;
+        }
+
+        private void vehicles_SwipedUp(object sender, SwipedEventArgs e)
+        {
+            if (!IsExpanded)
+            {
+                orderParameters.TranslateTo(0, 0);
+                IsExpanded = true;
+            }
+        }
+        private void vehicles_SwipedDown(object sender, SwipedEventArgs e)
+        {
+            if (IsExpanded)
+            {
+                orderParameters.TranslateTo(0, 330);
+                IsExpanded = false;
+            }
+        }
+        private async void OrderForTimeTapped(object sender, EventArgs e)
+        {
+            var result = await Navigation.ShowPopupAsync(new TimePopup());
+            if (result != null)
+            {
+                //send request to server
+            }
+        }
+
+        private async void PromocodeTapped(object sender, EventArgs e)
+        {
+           var result = await Navigation.ShowPopupAsync(new PromocodePopup());
+            if (result != null)
+            {
+                //send request to server
+            }
         }
     }
 }

@@ -3,10 +3,10 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(TableView), typeof(CustomTableViewRender))]
+[assembly: ExportRenderer(typeof(TableView), typeof(CustomTableViewRenderer))]
 namespace RiderApp.iOS.Renderers
 {
-    class CustomTableViewRender : TableViewRenderer
+    class CustomTableViewRenderer : TableViewRenderer
     {
 		protected override void OnElementChanged(ElementChangedEventArgs<TableView> e)
 		{

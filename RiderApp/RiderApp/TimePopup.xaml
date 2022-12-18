@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+           xmlns="http://xamarin.com/schemas/2014/forms"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           x:Class="RiderApp.TimePopup"
+           Size="350,150">
+    <xct:Popup.Resources>
+        <ResourceDictionary>
+            <Style x:Key="frame"
+                   TargetType="Frame">
+                <Setter Property="HasShadow"
+                        Value="False" />
+                <Setter Property="Padding"
+                        Value="10" />
+                <Setter Property="CornerRadius"
+                        Value="30" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="BorderColor"
+                        Value="#ffc600" />
+                <Setter Property="Margin"
+                        Value="0,10" />
+            </Style>
+            <Style x:Key="label"
+                   TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="18" />
+                <Setter Property="TextColor"
+                        Value="Black" />
+                <Setter Property="HorizontalTextAlignment"
+                        Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </xct:Popup.Resources>
+    <StackLayout Padding="20">
+        <TimePicker x:Name="time"
+                    Format="HH:mm" 
+                    HorizontalOptions="Center"/>
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="CenterAndExpand">
+            <Frame Style="{StaticResource frame}"
+                   WidthRequest="100">
+                <Label Text="Скасувати"
+                       Style="{StaticResource label}" />
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseTapped"
+                                          NumberOfTapsRequired="1" />
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Frame Style="{StaticResource frame}"
+                   WidthRequest="100">
+                <Label Text="Ок"
+                       Style="{StaticResource label}" />
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OkTapped"
+                                          NumberOfTapsRequired="1" />
+                </Frame.GestureRecognizers>
+            </Frame>
+        </StackLayout>
+    </StackLayout>
+</xct:Popup>
