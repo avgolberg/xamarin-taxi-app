@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local1="clr-namespace:RiderApp.MarkupExtensions"
+             x:Class="RiderApp.CardsPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="frame"
+                   TargetType="Frame">
+                <Setter Property="HasShadow"
+                        Value="False" />
+                <Setter Property="Padding"
+                        Value="8" />
+                <Setter Property="CornerRadius"
+                        Value="30" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="BorderColor"
+                        Value="#E2E2E2" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="18" />
+                <Setter Property="TextColor"
+                        Value="Black" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout Margin="40">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Рахунок та картки"
+                   FontSize="25"
+                   FontAttributes="Bold"
+                   HorizontalOptions="StartAndExpand" />
+            <Image Source="{local1:EmbeddedImage RiderApp.Images.close.png}"
+                   HeightRequest="20"
+                   WidthRequest="20"
+                   HorizontalOptions="End">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseTapped"
+                                          NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+        <StackLayout Margin="0, 30">
+            <Label x:Name="accountLabel"
+                   Text="0 ₴"
+                   FontSize="35"
+                   FontAttributes="Bold"
+                   HorizontalTextAlignment="Center" />
+            <Label x:Name="freezeLabel"
+                   Text="Заморозити"
+                   Margin="0, 10"
+                   FontSize="20"
+                   TextColor="#27B8FF"
+                   HorizontalOptions="Center"
+                   IsVisible="True">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="FreezeTapped"
+                                          NumberOfTapsRequired="1" />
+                </Label.GestureRecognizers>
+            </Label>
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="Center">
+                <Frame Style="{StaticResource frame}"
+                       BackgroundColor="#ffc600"
+                       BorderColor="#ffc600">
+                    <Image Source="{local1:EmbeddedImage RiderApp.Images.close.png}"
+                           HeightRequest="15"
+                           WidthRequest="15" />
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="RemoveCardTapped"
+                                              NumberOfTapsRequired="1" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+                <Frame x:Name="cardFrame"
+                       Style="{StaticResource frame}"
+                       Margin="0, 15"
+                       Padding="10"
+                       CornerRadius="10"
+                       HorizontalOptions="Center"
+                       IsVisible="True">
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="{local1:EmbeddedImage RiderApp.Images.mastercard.png}"
+                               HeightRequest="30"
+                               WidthRequest="30" />
+                        <Label x:Name="cardLabel"
+                               Text="•••• •••• •••• 1234"
+                               FontSize="25"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         Padding="10"
+                         IsVisible="True">
+                <CheckBox x:Name="checkBox"
+                          Margin="20, 0, 0, 0"
+                          VerticalOptions="Center" />
+                <Label Text="Автоматично сплачувати обраною карткою"
+                       Margin="-15, 0, 0, 0"
+                       HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AutoPayTapped"
+                                              NumberOfTapsRequired="1" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+        <Frame Style="{StaticResource frame}"
+               Margin="0, 10"
+               BackgroundColor="#ffc600"
+               BorderColor="#ffc600">
+            <Label Text="Поповнити рахунок"
+                   FontSize="25"
+                   HorizontalTextAlignment="Center" />
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TopUpTapped"
+                                      NumberOfTapsRequired="1" />
+            </Frame.GestureRecognizers>
+        </Frame>
+        <Frame Style="{StaticResource frame}"
+               Margin="0, 10"
+               BackgroundColor="#ffc600"
+               BorderColor="#ffc600">
+            <Label Text="Додати картку"
+                   FontSize="25"
+                   HorizontalTextAlignment="Center" />
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="AddCardTapped"
+                                      NumberOfTapsRequired="1" />
+            </Frame.GestureRecognizers>
+        </Frame>
+        <StackLayout VerticalOptions="EndAndExpand" Margin="40">
+            <Label TextColor="Gray"
+                   HorizontalTextAlignment="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Проводячи платіж, ви погоджуєтесь з нашими " />
+                        <Span Text="правилами та положеннями"
+                              TextDecorations="Underline" />
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TermsTapped"
+                                          NumberOfTapsRequired="1" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

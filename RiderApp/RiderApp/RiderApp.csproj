@@ -22,6 +22,7 @@
     <None Remove="Images\line.png" />
     <None Remove="Images\location.png" />
     <None Remove="Images\logo.png" />
+    <None Remove="Images\mastercard.png" />
     <None Remove="Images\minivan.png" />
     <None Remove="Images\minivan2.png" />
     <None Remove="Images\options.png" />
@@ -33,6 +34,7 @@
     <None Remove="Images\truck.png" />
     <None Remove="Images\truck2.png" />
     <None Remove="Images\user-location.png" />
+    <None Remove="Images\visa.png" />
     <None Remove="MapStyle.json" />
   </ItemGroup>
 
@@ -48,6 +50,7 @@
     <EmbeddedResource Include="Images\line.png" />
     <EmbeddedResource Include="Images\location.png" />
     <EmbeddedResource Include="Images\logo.png" />
+    <EmbeddedResource Include="Images\mastercard.png" />
     <EmbeddedResource Include="Images\minivan.png" />
     <EmbeddedResource Include="Images\minivan2.png" />
     <EmbeddedResource Include="Images\options.png" />
@@ -58,6 +61,7 @@
     <EmbeddedResource Include="Images\standard-car2.png" />
     <EmbeddedResource Include="Images\truck.png" />
     <EmbeddedResource Include="Images\truck2.png" />
+    <EmbeddedResource Include="Images\visa.png" />
     <EmbeddedResource Include="MapStyle.json" />
   </ItemGroup>
 
@@ -75,6 +79,9 @@
 
   <ItemGroup>
     <EmbeddedResource Update="CalculatePricePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="CardsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Extensions\CustomSwitchCell.xaml">

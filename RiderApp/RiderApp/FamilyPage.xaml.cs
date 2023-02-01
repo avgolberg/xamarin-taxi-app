@@ -18,7 +18,7 @@ namespace RiderApp
         }
         private async void AddTapped(object sender, EventArgs e)
         {
-            if (phone.Text!=null && phone.Text.Length > 0)
+            if (!string.IsNullOrWhiteSpace(phone.Text))
             {
                 //Request to server
                 await DisplayAlert("Успішна операція", "Телефон додано!", "Ок");
