@@ -44,12 +44,13 @@
                 </Image.GestureRecognizers>
             </Image>
         </StackLayout>
-        <StackLayout Margin="0, 30">
+        <StackLayout Margin="40">
             <Label x:Name="accountLabel"
                    Text="0 ₴"
                    FontSize="35"
                    FontAttributes="Bold"
-                   HorizontalTextAlignment="Center" />
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Center" />
             <Label x:Name="freezeLabel"
                    Text="Заморозити"
                    Margin="0, 10"
@@ -66,7 +67,8 @@
                          HorizontalOptions="Center">
                 <Frame Style="{StaticResource frame}"
                        BackgroundColor="#ffc600"
-                       BorderColor="#ffc600">
+                       BorderColor="#ffc600"
+                       Margin="5">
                     <Image Source="{local1:EmbeddedImage RiderApp.Images.close.png}"
                            HeightRequest="15"
                            WidthRequest="15" />
@@ -77,7 +79,7 @@
                 </Frame>
                 <Frame x:Name="cardFrame"
                        Style="{StaticResource frame}"
-                       Margin="0, 15"
+                       Margin="5, 15"
                        Padding="10"
                        CornerRadius="10"
                        HorizontalOptions="Center"

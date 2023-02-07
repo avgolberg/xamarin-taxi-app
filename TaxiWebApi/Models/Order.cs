@@ -35,6 +35,7 @@ namespace TaxiWebApi.Models
         public Administrator Administrator { get; set; }
 
         public DateTime EndTime { get; set; }
+        // public double Distance { get; set; } //km
         public int Price { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
         public int Rating { get; set; }

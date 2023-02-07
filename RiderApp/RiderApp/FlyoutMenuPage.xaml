@@ -45,7 +45,7 @@
                     <local:MenuItem Title="Рахунок та картки"
                                     TargetPage="{x:Type local:CardsPage}" />
                     <local:MenuItem Title="Історія замовлень"
-                                    TargetPage="{x:Type local:CalculatePricePage}" />
+                                    TargetPage="{x:Type local:OrderHistoryPage}" />
                     <local:MenuItem Title="Відправити відгук"
                                     TargetPage="{x:Type local:ReviewPage}" />
                     <local:MenuItem Title="Додати сім'ю"

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local1="clr-namespace:RiderApp.MarkupExtensions"
+             x:Class="RiderApp.OrderHistoryPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="frame"
+                   TargetType="Frame">
+                <Setter Property="HasShadow"
+                        Value="False" />
+                <Setter Property="Padding"
+                        Value="8" />
+                <Setter Property="CornerRadius"
+                        Value="30" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="BorderColor"
+                        Value="#E2E2E2" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="18" />
+                <Setter Property="TextColor"
+                        Value="Black" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Margin="40">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Історія замовлень"
+                   FontSize="25"
+                   FontAttributes="Bold"
+                   HorizontalOptions="StartAndExpand" />
+            <Image Source="{local1:EmbeddedImage RiderApp.Images.close.png}"
+                   HeightRequest="20"
+                   WidthRequest="20"
+                   HorizontalOptions="End">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseTapped"
+                                          NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+        <StackLayout Margin="40">
+            <Label x:Name="totalOrdersLabel"
+                   HorizontalTextAlignment="Center"
+                   LineBreakMode="WordWrap"/>
+            <Label x:Name="phoneLabel"
+                   Text="{Binding Phone}"
+                   HorizontalTextAlignment="Center"
+                   LineBreakMode="WordWrap" />
+            <StackLayout Margin="20"
+                         HorizontalOptions="Center">
+                <Label x:Name="placeholder"
+                       Text="Оберіть місяць:"
+                       TextColor="LightGray"
+                       HorizontalTextAlignment="Center"/>
+                <Picker x:Name="monthsPicker"
+                        HorizontalTextAlignment="Center"
+                        WidthRequest="150"
+                        SelectedIndexChanged="monthsPicker_SelectedIndexChanged" />
+            </StackLayout>
+            <ListView x:Name="ordersListView"
+                      SeparatorColor="Transparent"
+                      RowHeight="210">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell IsEnabled="false">
+                            <Frame Style="{StaticResource frame}">
+                                <StackLayout Spacing="10" Padding="10">
+                                    <Label Text="{Binding StartLocation}" />
+                                    <Label Text="{Binding StartTime, StringFormat='{0:dd.MM}, {0:HH:mm}'}" HorizontalOptions="End"/>
+                                    <Label Text="{Binding EndLocation}" />
+                                    <Label>
+                                        <Label.Text>
+                                            <MultiBinding StringFormat="{}Шлях: {0} км, {1:HH:mm} ({2:hh}:{2:mm})">
+                                                <Binding Path="Distance" />
+                                                <Binding Path="EndTime" />
+                                                <Binding Path="Duration" />
+                                            </MultiBinding>
+                                        </Label.Text>
+                                    </Label>
+                                    <Label Text="{Binding Price, StringFormat='{0:F2} ₴'}"
+                                           HorizontalOptions="End" />
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label x:Name="totalLabel"  HorizontalTextAlignment="Center">
+                <Label.Text>
+                    <MultiBinding StringFormat="{} Усього: {0} грн., {1} км">
+                        <Binding Path="TotalPrice" />
+                        <Binding Path="TotalDist" />
+                    </MultiBinding>
+                </Label.Text>
+            </Label>
+            <Label x:Name="DisableHistory"
+                   Text="Відлючити історію поїздок"
+                   TextColor="Blue"
+                   TextDecorations="Underline"
+                   HorizontalTextAlignment="Center"
+                   Margin="0,40,0,0">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="DisableHistoryTapped"
+                                          NumberOfTapsRequired="1" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
