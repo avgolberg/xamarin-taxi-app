@@ -115,12 +115,14 @@
                         <Frame Style="{StaticResource frame}"
                                HeightRequest="50">
                             <StackLayout Orientation="Horizontal">
+                                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                                 <Label Text="Викликати авто"
                                        TextColor="Black"
                                        FontSize="26"
                                        HorizontalOptions="CenterAndExpand"
                                        VerticalTextAlignment="Center"
-                                       HorizontalTextAlignment="Center" />
+                                       HorizontalTextAlignment="Center"/>
+                                </StackLayout>
                                 <StackLayout Orientation="Horizontal"
                                              HorizontalOptions="End">
                                     <BoxView Color="#dea400"
@@ -131,8 +133,16 @@
                                            FontSize="26"
                                            WidthRequest="40"
                                            VerticalTextAlignment="Center" />
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="AddCountTapped"
+                                                              NumberOfTapsRequired="1" />
+                                    </StackLayout.GestureRecognizers>
                                 </StackLayout>
                             </StackLayout>
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OrderTapped"
+                                                      NumberOfTapsRequired="1" />
+                            </Frame.GestureRecognizers>
                         </Frame>
                         <StackLayout Orientation="Horizontal"
                                      Margin="0, 20, 0, 0"

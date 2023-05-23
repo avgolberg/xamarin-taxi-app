@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<xct:Popup xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+           xmlns="http://xamarin.com/schemas/2014/forms"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           xmlns:local1="clr-namespace:RiderApp.MarkupExtensions"
+           x:Class="RiderApp.FreightTariffsPopup">
+    <xct:Popup.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="20" />
+                <Setter Property="TextColor"
+                        Value="Black" />
+            </Style>
+        </ResourceDictionary>
+    </xct:Popup.Resources>
+    <StackLayout Padding="20" Spacing="15">
+        <Image Source="{local1:EmbeddedImage RiderApp.Images.close.png}"
+               HeightRequest="20"
+               WidthRequest="20"
+               HorizontalOptions="End">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="CloseTapped"
+                                      NumberOfTapsRequired="1" />
+            </Image.GestureRecognizers>
+        </Image>
+        <StackLayout>
+            <Label Text="Економ" FontAttributes="Bold" />
+            <Label Text=" • Ціна 400 ₴. Не більше однієї години та 7.5 км, тільки в межах міста та без послуг вантажника" />
+            <Label Text=" • Друга година — +100 ₴ починаючи з першої хвилини." />
+            <Label Text=" • Третя та далі години — 250 ₴, оплата похвилинна" />
+        </StackLayout>
+
+        <StackLayout>
+            <Label Text="Стандарт" FontAttributes="Bold" />
+            <Label Text=" • Мінімальне замовлення — 500 ₴ (в нього включено 2 години)" />
+            <Label Text=" • 1 година — 250 ₴, оплата похвилинна" />
+        </StackLayout>
+
+        <StackLayout>
+            <Label Text=" • Поїздка за межі міста - 30.00 ₴/км" />
+            <Label Text=" • Водій-вантажник — 3 ₴/хвилина за усе замовлення" />
+            <Label Text=" • Другий вантажник — 3 ₴/хвилина за усе замовлення (мін. 2 години)" />
+            <Label Text=" • Місце для одного пасажира в авто — безкоштовно" />
+            <Label Text=" • Другий та наступні пасажири — 50 ₴ за кожного" />
+            <Label Text=" • Підйом/спуск на поверх — 15 ₴/поверх" />
+            <Label Text=" • Проміжна зупинка на шляху — 100 ₴ за кожну" />
+            <Label Text=" • Відміна замовлення — 100 ₴" />
+        </StackLayout>
+    </StackLayout>
+</xct:Popup>

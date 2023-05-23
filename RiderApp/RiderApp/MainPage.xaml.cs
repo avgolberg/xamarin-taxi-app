@@ -135,8 +135,6 @@ namespace RiderApp
                 //END TRIP
                 map.Polylines?.FirstOrDefault()?.Positions?.Clear();
             }
-
-
         }
 
         void Calculate(List<Position> list)
@@ -251,6 +249,17 @@ namespace RiderApp
             {
                 //send request to server
             }
+        }
+
+        private async void OrderTapped(object sender, EventArgs e)
+        {
+            //if вантажне (i, індекси в enum)
+            await Navigation.PushAsync(new FreightTaxiPage());
+        }
+
+        private async void AddCountTapped(object sender, EventArgs e)
+        {
+
         }
     }
 }

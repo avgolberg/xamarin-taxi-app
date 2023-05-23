@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local1="clr-namespace:RiderApp.MarkupExtensions"
+             x:Class="RiderApp.FreightTaxiPage"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="frame"
+                   TargetType="Frame">
+                <Setter Property="HasShadow"
+                        Value="False" />
+                <Setter Property="Padding"
+                        Value="10" />
+                <Setter Property="CornerRadius"
+                        Value="30" />
+                <Setter Property="VerticalOptions"
+                        Value="Center" />
+                <Setter Property="BorderColor"
+                        Value="#E2E2E2" />
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontSize"
+                        Value="20" />
+                <Setter Property="TextColor"
+                        Value="Black" />
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="HorizontalTextAlignment"
+                        Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Margin="40">
+        <StackLayout Orientation="Horizontal">
+            <Label Text="Вантажне таксі"
+                   FontSize="25"
+                   FontAttributes="Bold"
+                   HorizontalOptions="StartAndExpand" />
+            <Image Source="{local1:EmbeddedImage RiderApp.Images.close.png}"
+                   HeightRequest="20"
+                   WidthRequest="20"
+                   HorizontalOptions="End">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseTapped"
+                                          NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="40,40,40,20" Spacing="20">
+            <Label Text="Як це працює?"
+                   TextColor="#0066FF"
+                   HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="InfoTapped"
+                                          NumberOfTapsRequired="1" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Label Text="Тарифи"
+                   TextColor="#0066FF"
+                   HorizontalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="FreightTariffsTapped"
+                                          NumberOfTapsRequired="1" />
+                </Label.GestureRecognizers>
+            </Label>
+            <Image Source="{local1:EmbeddedImage RiderApp.Images.phone.png}"
+                   HeightRequest="25"
+                   WidthRequest="25">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseTapped"
+                                          NumberOfTapsRequired="1" />
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
+        <StackLayout Margin="40,20">
+            <Frame Style="{StaticResource frame}">
+                <Entry x:Name="startLocation"
+                       Placeholder="Звідки"
+                       HorizontalOptions="FillAndExpand" />
+            </Frame>
+            <Frame Style="{StaticResource frame}">
+                <Entry x:Name="endLocation"
+                       Placeholder="Куди"
+                       HorizontalOptions="FillAndExpand" />
+            </Frame>
+            <Frame Style="{StaticResource frame}">
+                <StackLayout Orientation="Horizontal">
+                    <Entry Placeholder="Що потрібно перевезти"
+                           HorizontalOptions="FillAndExpand" />
+                    <Image Source="{local1:EmbeddedImage RiderApp.Images.camera.png}"
+                           HeightRequest="25"
+                           WidthRequest="25"
+                           HorizontalOptions="End"
+                           Margin="10">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="CloseTapped"
+                                                  NumberOfTapsRequired="1" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal"
+                     Margin="40,0">
+            <RadioButton Content="Економ" />
+            <RadioButton Content="Стандарт" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal"
+                     Margin="40, 10">
+            <RadioButton Content="Зараз" />
+            <RadioButton Content="На час" />
+        </StackLayout>
+        <StackLayout Margin="40,0">
+            <StackLayout Orientation="Horizontal">
+                <CheckBox x:Name="checkBox1" />
+                <Label Text="Водій-вантажник"
+                       FontSize="18"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CloseTapped"
+                                              NumberOfTapsRequired="1" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <CheckBox x:Name="checkBox2" />
+                <Label Text="Другий вантажник"
+                       FontSize="18"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CloseTapped"
+                                              NumberOfTapsRequired="1" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            <Frame Style="{StaticResource frame}"
+                   Margin="0, 30"
+                   BackgroundColor="#ffc600"
+                   BorderColor="#ffc600">
+                <Label Text="Викликати машину"
+                       FontSize="25"
+                       HorizontalTextAlignment="Center" />
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CloseTapped"
+                                          NumberOfTapsRequired="1" />
+                </Frame.GestureRecognizers>
+            </Frame>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
